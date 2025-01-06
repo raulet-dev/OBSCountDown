@@ -2,11 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
     <title>Title</title>
 </head>
 <body>
-    <p id="message">Count Down</p>
-    <p id="display">Params</p>
+<div class="container">
+    <table>
+        <tr id="message">
+            <th colspan="4" id="thdays">Days</th>
+            <th colspan="4" id="thhours">Hours</th>
+            <th colspan="4" id="thminutes">Minutes</th>
+            <th colspan="4" id="thseconds">Seconds</th>
+        </tr>
+        <tr id="display">
+            <td colspan="4" id="tddays">0</td>
+            <td colspan="4" id="tdhours">0</td>
+            <td colspan="4" id="tdminutes">0</td>
+            <td colspan="4" id="tdseconds">0</td>
+        </tr>
+    </table>
     <script src="script.js"></script>
+</div>
 </body>
 </html>
