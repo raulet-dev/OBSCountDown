@@ -16,7 +16,11 @@ function displayQueryParams() {
     if(JSON.stringify(params) === "{}") {
         document.getElementById("display").innerText = "Expected Params: ?year=2025&month=01&day=05&hour=22&minute=50&second=00";
     } else {
-        const displayElement = document.getElementById("display");
+        // const displayElement = document.getElementById("display");
+        const displayDays = document.getElementById("tddays");
+        const displayHours = document.getElementById("tdhours");
+        const displayMinutes = document.getElementById("tdminutes");
+        const displaySeconds = document.getElementById("tdseconds");
         const now = new Date()
         const year = parseInt(params.year);
         const month = parseInt(params.month) - 1; // Months are zero-indexed
@@ -27,7 +31,19 @@ function displayQueryParams() {
         const desiredDate = new Date(year, month, day, hour, minute, second)
         let count = Math.floor((desiredDate.getTime() - now.getTime())/1000)
         let timeLeft = getCount(count)
-        displayElement.innerText = "Time: " + timeLeft.day + ":" + timeLeft.hour + ":" + timeLeft.minute + ":" + timeLeft.second + "";
+        displayDays.innerHTML = convertTwoDigits(timeLeft.day);
+        displayHours.innerHTML = convertTwoDigits(timeLeft.hour);
+        displayMinutes.innerHTML = convertTwoDigits(timeLeft.minute);
+        displaySeconds.innerHTML = convertTwoDigits(timeLeft.second);
+        // displayElement.innerText = convertTwoDigits(timeLeft.day) + " : " + convertTwoDigits(timeLeft.hour) + " : " + convertTwoDigits(timeLeft.minute) + " : " + convertTwoDigits(timeLeft.second);
+    }
+}
+
+function convertTwoDigits(digits) {
+    if (!isNaN(digits) && digits >= 0 && digits <= 9) {
+        return `0${digits}`;
+    } else {
+        return digits;
     }
 }
 
