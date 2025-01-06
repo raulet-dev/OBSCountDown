@@ -56,7 +56,7 @@ function getCount(secs){
     }
     count.second = (secs % 60)<0? 0 : (secs % 60)
     count.minute = (Math.floor(secs / 60) % 60)<0? 0 : (Math.floor(secs / 60) % 60)
-    count.hour = (Math.floor(secs / 3600)<0)? 0 : (Math.floor(secs / 3600))
+    count.hour = (Math.floor(secs / 3600)<0)? 0 : (Math.floor((secs / 3600)%24))
     count.day = ((Math.floor(secs / 86400) -1) < 0)? 0 : (Math.floor(secs / 86400) -1  );
     return count
 }
