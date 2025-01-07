@@ -16,7 +16,6 @@ function displayQueryParams() {
     if(JSON.stringify(params) === "{}") {
         document.getElementById("display").innerText = "Expected Params: ?year=2025&month=01&day=05&hour=22&minute=50&second=00";
     } else {
-        // const displayElement = document.getElementById("display");
         const displayDays = document.getElementById("tddays");
         const displayHours = document.getElementById("tdhours");
         const displayMinutes = document.getElementById("tdminutes");
@@ -35,7 +34,6 @@ function displayQueryParams() {
         displayHours.innerHTML = convertTwoDigits(timeLeft.hour);
         displayMinutes.innerHTML = convertTwoDigits(timeLeft.minute);
         displaySeconds.innerHTML = convertTwoDigits(timeLeft.second);
-        // displayElement.innerText = convertTwoDigits(timeLeft.day) + " : " + convertTwoDigits(timeLeft.hour) + " : " + convertTwoDigits(timeLeft.minute) + " : " + convertTwoDigits(timeLeft.second);
     }
 }
 
@@ -57,12 +55,9 @@ function getCount(secs){
     count.second = (secs % 60)<0? 0 : (secs % 60)
     count.minute = (Math.floor(secs / 60) % 60)<0? 0 : (Math.floor(secs / 60) % 60)
     count.hour = (Math.floor(secs / 3600)<0)? 0 : (Math.floor((secs / 3600)%24))
-    count.day = ((Math.floor(secs / 86400) -1) < 0)? 0 : (Math.floor(secs / 86400) -1  );
+    count.day = ((Math.floor((secs / 3600)/24)) < 0)? 0 : (Math.floor((secs / 3600)/24)  );
     return count
 }
-
-//convert to 2 digit formula
-// if (!isNaN(numValue) && numValue >= 0 && numValue <= 9) { params[key] = `0${numValue}`; } else { params[key] = isNaN(numValue) ? value : numValue; }
 
 displayQueryParams();
 
